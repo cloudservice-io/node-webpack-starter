@@ -1,6 +1,4 @@
 const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
