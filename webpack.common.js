@@ -2,8 +2,10 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const getAbsolutePath = pathParam => path.resolve(process.cwd(), pathParam);
+
 module.exports = {
-  entry: path.resolve(process.cwd(), 'src/index.js'),
+  entry: getAbsolutePath('src/index.js'),
   target: 'node',
   externals: [nodeExternals()],
   plugins: [new CleanWebpackPlugin()],
@@ -11,7 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/node_modules/],
+        exclude: [/node_modules/, getAbsolutePath('src/**/*.spec.js')],
         use: {
           loader: 'babel-loader',
           options: {
@@ -32,14 +34,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js'],
-    modules: [
-      'node_modules',
-      path.resolve(process.cwd(), 'src'),
-      path.resolve(process.cwd(), 'node_modules'),
-    ],
+    modules: [getAbsolutePath('src'), getAbsolutePath('node_modules')],
   },
   output: {
-    path: path.resolve(process.cwd(), 'build'),
+    path: getAbsolutePath('build'),
     filename: 'service.js',
   },
 };
