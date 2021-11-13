@@ -1,21 +1,10 @@
 {
   "name": "node-webpack-starter",
   "version": "0.0.1",
-  "description": "Starting point for node express projects using webpack",
+  "description": "Starting point for a node express project using webpack",
   "main": "dist/index.js",
   "author": "Clayton Marinho e Silva <claytonmarinho@gmail.com>",
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "./src/**/*.{js}": [
-      "prettier --write .",
-      "eslint --quiet --fix"
-    ]
-  },
   "dependencies": {
     "express": "^4.17.1",
     "helmet": "^4.6.0"
@@ -29,10 +18,13 @@
     "babel-loader": "^8.2.3",
     "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^8.2.0",
     "eslint-config-node": "^4.1.0",
     "eslint-plugin-import": "^2.25.3",
-    "husky": "^7.0.4",
+    "eslint-plugin-jest": "^25.2.4",
+    "husky": "4",
     "jest": "^27.3.1",
+    "lint-staged": "^12.0.1",
     "nodemon": "^2.0.15",
     "prettier": "^2.4.1",
     "supertest": "^6.1.6",
@@ -44,8 +36,12 @@
     "build": "webpack --config ./webpack.prod.js",
     "start": "webpack --config ./webpack.dev.js --watch & NODE_ENV=development nodemon --inspect ./build/service.js",
     "lint": "eslint  \"./src/**/*\" --quiet --ext .js",
-    "test-watch": "jest --watch",
-    "test": "jest"
+    "lint:fix": "eslint  \"./src/**/*\" --quiet --ext .js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "engines": {
+    "node": "^14.17.0 || >=16.0.0"
   },
   "keywords": [
     "express",

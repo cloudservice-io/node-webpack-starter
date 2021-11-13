@@ -1,6 +1,6 @@
 # node-webpack-starter
 
-Starting point for node express projects using webpack
+Starting point for a node express project using webpack
 
 ## Development
 

@@ -2,9 +2,7 @@ import { createService } from './lib/createService';
 import { startService } from './lib/startService';
 
 const initialize = async () => {
-  const { APP_VERSION } = process.env;
   const { PORT: port = 3000, NODE_ENV: env } = process.env;
-
   try {
     const service = await createService();
     await startService(service, { port });

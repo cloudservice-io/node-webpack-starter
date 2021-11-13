@@ -9,7 +9,6 @@ module.exports = {
     '^.+\\.jsx?$': './jest.transform.js',
   },
   collectCoverage: true,
-  // collectCoverageFrom: ['websrc/**'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
   coverageReporters: ['text-summary', 'html'],
   setupFiles: ['./jest.init.js'],

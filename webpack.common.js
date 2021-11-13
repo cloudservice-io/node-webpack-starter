@@ -4,22 +4,11 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const getPackageJson = () => {
-  const packageJsonFile = `${process.cwd()}/package.json`;
-  const packageJsonText = fs.readFileSync(packageJsonFile).toString();
-  return JSON.parse(packageJsonText);
-};
-
 module.exports = {
   entry: path.resolve(process.cwd(), 'src/index.js'),
   target: 'node',
   externals: [nodeExternals()],
-  plugins: [
-    new webpack.DefinePlugin({
-      APP_VERSION: JSON.stringify(getPackageJson().version),
-    }),
-    new CleanWebpackPlugin(),
-  ],
+  plugins: [new CleanWebpackPlugin()],
   module: {
     rules: [
       {
